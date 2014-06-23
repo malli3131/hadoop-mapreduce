@@ -36,13 +36,21 @@ public class Search {
 
 	/**
 	 * @param args
-	 * @author Nagamallikarjuna
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 * @throws InterruptedException 
 	 */
 	public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
 		Configuration conf = new Configuration();
+		
+		String otherArgs[] = new GenericOptionsParser(conf, args).getRemainingArgs();
+		
+		if(otherArgs.length != 3)
+		{
+			System.out.println("Usage: search <input> <output> <seach Keyword>");
+			System.exit(1);
+		}
+		
 		String query = args[2];
 		conf.set("query", query);
 
